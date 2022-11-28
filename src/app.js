@@ -4,6 +4,9 @@ import cookieParser from "cookie-parser";
 import { airlinesRouter } from "./routes/airlines.routes.js";
 import { airportsRouter } from "./routes/airports.routes.js";
 import { flightsRouter } from "./routes/flights.routes.js";
+import { Airlines } from "./models/Airlines.js";
+import { Airports } from "./models/Airports.js";
+import { Flights } from "./models/Flights.js";
 
 export const app = express();
 
@@ -17,3 +20,20 @@ app.use("/flights", flightsRouter);
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(cookieParser());
 app.use(morgan("dev"));
+
+Airports.hasMany(Airlines, {
+  foreignKey: "airportId",
+  sourceKey: "id",
+});
+
+Airlines.belongsTo(Airports, { foreignKey: "airportId", targetId: "id" });
+
+Airports.hasMany(Flights, {
+  foreignKey: "flightsId",
+  targetId: "id",
+});
+
+Flights.belongsTo(Airports, {
+  foreignKey: "flightsId",
+  targetId: "id",
+});

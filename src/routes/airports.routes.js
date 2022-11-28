@@ -11,6 +11,6 @@ export const airportsRouter = Router();
 
 airportsRouter.get("/", getAirports);
 airportsRouter.get("/:id", getAirportById);
-airportsRouter.post("/create", createAirport);
-airportsRouter.put("/update/:id", updateAirport);
-airportsRouter.delete("/delete/:id", deleteAirport);
+airportsRouter.post("/", createAirport);
+airportsRouter.put("/:id", updateAirport);
+airportsRouter.delete("/:id", deleteAirport);

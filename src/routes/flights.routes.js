@@ -6,7 +6,6 @@ import {
   getFlightsById,
   updateFlight,
 } from "../controllers/controllers.js";
-import { Flights } from "../models/Flights.js";
 
 export const flightsRouter = Router();
 
@@ -14,8 +13,8 @@ flightsRouter.get("/", getFlights);
 
 flightsRouter.get("/:id", getFlightsById);
 
-flightsRouter.post("/create", createFlight);
+flightsRouter.post("/", createFlight);
 
-flightsRouter.put("/update/:id", updateFlight);
+flightsRouter.put("/:id", updateFlight);
 
-flightsRouter.delete("/delete/:id", deleteFlight);
+flightsRouter.delete("/:id", deleteFlight);

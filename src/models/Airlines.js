@@ -1,5 +1,7 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
+import { Airports } from "./Airports.js";
+import { Flights } from "./Flights.js";
 
 export const Airlines = sequelize.define(
   "airlines",

@@ -13,8 +13,8 @@ airlinesRouter.get("/", getAirlines);
 
 airlinesRouter.get("/:id", getAirlineById);
 
-airlinesRouter.post("/create", createAirline);
+airlinesRouter.post("/", createAirline);
 
-airlinesRouter.put("/update/:id", updateAirline);
+airlinesRouter.put("/:id", updateAirline);
 
-airlinesRouter.delete("/delete/:id", deleteAirline);
+airlinesRouter.delete("/:id", deleteAirline);
