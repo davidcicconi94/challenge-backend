@@ -1,27 +1,20 @@
-import express, { Router } from "express";
-import { Airlines } from "../models/Airlines.js";
+import { Router } from "express";
+import {
+  createAirline,
+  deleteAirline,
+  getAirlineById,
+  getAirlines,
+  updateAirline,
+} from "../controllers/controllers.js";
 
 export const airlinesRouter = Router();
 
-airlinesRouter.get("/", async (req, res) => {
-  try {
-    const airlines = await Airlines.findAll();
-    res.json(airlines);
-  } catch (error) {
-    console.error(error);
-  }
-});
+airlinesRouter.get("/", getAirlines);
 
-airlinesRouter.post("/create", async (req, res) => {
-  const { iata_code, airline } = req.body;
-  try {
-    const newAirline = await Airlines.create({
-      iata_code,
-      airline,
-    });
+airlinesRouter.get("/:id", getAirlineById);
 
-    res.json(newAirline);
-  } catch (error) {
-    console.error(error);
-  }
-});
+airlinesRouter.post("/create", createAirline);
+
+airlinesRouter.put("/update/:id", updateAirline);
+
+airlinesRouter.delete("/delete/:id", deleteAirline);

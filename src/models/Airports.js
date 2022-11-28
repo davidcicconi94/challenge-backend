@@ -4,25 +4,31 @@ import { sequelize } from "../database/database.js";
 export const Airports = sequelize.define(
   "airports",
   {
-    ID: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    IATA_CODE: {
+    iata_code: {
       type: DataTypes.STRING,
     },
-    AIRPORT: {
+    airport: {
       type: DataTypes.STRING,
     },
-    CITY: {
+    city: {
       type: DataTypes.STRING,
     },
-    STATE: {
+    state: {
       type: DataTypes.STRING,
     },
-    COUNTRY: {
+    country: {
       type: DataTypes.STRING,
+    },
+    latitude: {
+      type: DataTypes.DECIMAL,
+    },
+    longitude: {
+      type: DataTypes.DECIMAL,
     },
   },
   {
