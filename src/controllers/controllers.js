@@ -1,5 +1,6 @@
 import { Airlines } from "../models/Airlines.js";
 import { Airports } from "../models/Airports.js";
+import { Flights } from "../models/Flights.js";
 
 // Airlines
 export const getAirlines = async (req, res) => {
@@ -157,3 +158,33 @@ export const createAirport = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+// FLIGHTS
+export const getFlights = async (req, res) => {
+  try {
+    const flights = await new Flights.findAll();
+    res.json(flights);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const getFlightsById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const flightsById = await Flights.findOne({
+      where: {
+        id,
+      },
+    });
+    res.json(flightsById);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const createFlight = async (req, res) => {};
+
+export const updateFlight = async (req, res) => {};
+
+export const deleteFlight = async (req, res) => {};
